@@ -123,6 +123,11 @@ public class Instagram4Android {
 
     }
 
+    public void addCookie(String name, String value, long expires) {
+        cookieStore.put(name, new Cookie.Builder().name(name).value(value).expiresAt(expires).domain("instagram.com").path("/").httpOnly().secure().build());
+        this.isLoggedIn = true;
+    }
+
     public InstagramLoginResult loginFb() throws IOException {
 
         InstagramFbLoginPayload loginRequest = InstagramFbLoginPayload.builder()
